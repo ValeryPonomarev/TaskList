@@ -3,8 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TaskList.iml" filepath="$PROJECT_DIR$/TaskList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaskList.iml" filepath="$PROJECT_DIR$/TaskList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure/infrastructure.iml" filepath="$PROJECT_DIR$/infrastructure/infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/infrastructure.iml" filepath="$PROJECT_DIR$/infrastructure/infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure.android/infrastructure.android.iml" filepath="$PROJECT_DIR$/infrastructure.android/infrastructure.android.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure.android/infrastructure.android.iml" filepath="$PROJECT_DIR$/infrastructure.android/infrastructure.android.iml" />
     </modules>
   </component>
