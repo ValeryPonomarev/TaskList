@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:layout_marginBottom="10dp"
     style="@style/ListStyle">
 
@@ -11,20 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:textStyle="bold"
-        android:singleLine="true"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="16sp"
+        android:textSize="@dimen/medium_size"
         android:text="TASK-123"/>
 
     <TextView
-        android:id="@+id/task_title_view"
+        android:id="@+id/task_description_view"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:singleLine="true"
-        android:maxLines="1"
+        android:layout_height="40dp"
+        android:maxLines="2"
         android:ellipsize="end"
-        android:textSize="14sp"
-        android:text="Task title"/>
+        android:textSize="@dimen/medium_size"
+        android:text="task_description task_description task_description task_description task_description"/>
 
 </LinearLayout>

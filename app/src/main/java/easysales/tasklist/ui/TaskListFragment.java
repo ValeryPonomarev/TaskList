@@ -69,11 +69,13 @@ public class TaskListFragment extends BaseMainFragment implements TaskRecycleLis
         TaskEditDialog taskEditDialog = TaskEditDialog.newInstance(task);
 
         taskEditDialog.setConfirmRunnable(() -> {
-            task.number = taskEditDialog.getNumber();
-            task.title = taskEditDialog.getTitle();
+            task.description = taskEditDialog.getDescription();
+            TaskService.addSpendHours(task, taskEditDialog.getSpendTime());
+
             try {
                 Task.getDao().createOrUpdate(task);
                 Log.d(getUserTag(), "task save success");
+                adapter.notifyDataSetChanged();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -91,8 +93,6 @@ public class TaskListFragment extends BaseMainFragment implements TaskRecycleLis
     public void onAddTaskClick(View view) {
         Log.d(getUserTag(), "add new task");
         Task task = new Task();
-        task.number = "new number";
-        task.title = "new title";
         onItemClick(task);
     }
 }

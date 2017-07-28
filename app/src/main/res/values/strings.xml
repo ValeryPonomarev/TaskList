@@ -6,4 +6,8 @@
     <string name="add">Добавить</string>
     <string name="save">Сохранить</string>
     <string name="cancel">Отмена</string>
+    <string name="task_description">Описание задачи</string>
+    <string name="spend_time">Затраты</string>
+    <string name="task">Задача</string>
+    <string name="new_task">Новая задача</string>
 </resources>

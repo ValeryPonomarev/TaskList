@@ -52,19 +52,20 @@ public class TaskRecycleListAdapter extends RecyclerView.Adapter<TaskRecycleList
         @BindView(R.id.task_number_view)
         TextView taskNumberView;
 
-        @BindView(R.id.task_title_view)
+        @BindView(R.id.task_description_view)
         TextView taskTitleView;
 
         public TaskViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemClickListener = listener;
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Task task) {
             this.task = task;
             taskNumberView.setText(task.number);
-            taskTitleView.setText(task.title);
+            taskTitleView.setText(task.description);
         }
 
         @Override

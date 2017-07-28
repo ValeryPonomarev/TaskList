@@ -12,6 +12,41 @@
         <item name="android:padding">5dp</item>
     </style>
 
-    <style name="dialog_style" parent="Theme.AppCompat.Light.Dialog.Alert"></style>
+    <style name="dialog_style" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorPrimary">@color/primaryGreen</item>
+        <item name="android:colorAccent">@color/primaryGreen</item>
+        <item name="colorPrimary">@color/primaryGreen</item>
+        <item name="colorAccent">@color/primaryGreen</item>
+    </style>
+
+    <style name="edit_params_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/underline_background</item>
+        <item name="android:paddingBottom">1dp</item>
+    </style>
+
+    <style name="edit_params_caption">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">@dimen/medium_size</item>
+    </style>
+
+    <style name="edit_params_editor">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">@dimen/medium_size</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:background">@color/color_grayBackground</item>
+    </style>
 
 </resources>

@@ -2,6 +2,8 @@ package easysales.tasklist.model.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import easysales.tasklist.model.Task;
@@ -11,7 +13,6 @@ import easysales.tasklist.model.Task;
  */
 
 public class TaskService {
-
     public static List<Task> getTaskList() {
         List<Task> result = new ArrayList<>();
 
@@ -23,4 +24,13 @@ public class TaskService {
 
         return result;
     }
+
+    public static void addSpendHours(Task task, int value){
+        TaskService.addSpendMinuts(task, value * 60);
+    }
+
+    public static void addSpendMinuts(Task task, int value){
+        task.spandMinuts += value;
+    }
+
 }

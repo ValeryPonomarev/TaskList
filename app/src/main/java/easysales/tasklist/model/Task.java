@@ -21,9 +21,17 @@ public class Task extends BaseModel implements Serializable {
     @DatabaseField(generatedId = true)
     public Integer id;
 
+    @DatabaseField
     public String number;
-    public String title;
-    public Date dateBegin;
+
+    @DatabaseField
+    public String description;
+
+    @DatabaseField
+    public Date dateCreate;
+
+    @DatabaseField
+    public int spandMinuts;
 
     public static SimpleDao<Task> getDao() throws SQLException {
         if(dao == null) {
