@@ -67,6 +67,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private void genereteDB() {
         try {
             TableUtils.createTable(connectionSource, Task.class);
+            createSampleData();
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -82,5 +83,21 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
 
         Log.d(TAG, "Clear db is success");
+    }
+
+    private void createSampleData() throws SQLException {
+        SimpleDao<Task> taskDao = Task.getDao();
+
+        Task task1 = new Task();
+        task1.number = "N1";
+        task1.description = "description 1";
+
+        Task task2 = new Task();
+        task1.number = "N2";
+        task1.description = "description 2";
+
+        taskDao.create(task1);
+        taskDao.create(task2);
+
     }
 }

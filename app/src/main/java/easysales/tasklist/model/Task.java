@@ -5,6 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import easysales.tasklist.ApplicationWrapper;
@@ -40,4 +41,6 @@ public class Task extends BaseModel implements Serializable {
 
         return dao;
     }
+
+    public static class List extends ArrayList<Task> {}
 }

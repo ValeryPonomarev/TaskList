@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import easysales.tasklist.R;
 import easysales.tasklist.model.Task;
+import easysales.tasklist.model.repository.TaskRepository;
 import easysales.tasklist.model.service.TaskService;
 import easysales.tasklist.ui.adapter.TaskRecycleListAdapter;
 import easysales.tasklist.ui.base.BaseMainFragment;
@@ -54,30 +55,33 @@ public class TaskListFragment extends BaseMainFragment implements TaskRecycleLis
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
         ButterKnife.bind(this, view);
-        adapter = new TaskRecycleListAdapter(TaskService.getTaskList(), this);
+        adapter = new TaskRecycleListAdapter(TaskRepository.getTaskList(), this);
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         taskRecyclerView.setAdapter(adapter);
         return view;
     }
 
     @Override
-    public void onItemClick(Task task) {
+    public void onItemClick(final Task task) {
         Log.d(getUserTag(), "edit task");
         if(activity == null) {
             Toast.makeText(this.getContext(), "Oops, something is wrond, activity is null", Toast.LENGTH_SHORT).show();
         }
-        TaskEditDialog taskEditDialog = TaskEditDialog.newInstance(task);
+        final TaskEditDialog taskEditDialog = TaskEditDialog.newInstance(task);
 
-        taskEditDialog.setConfirmRunnable(() -> {
-            task.description = taskEditDialog.getDescription();
-            TaskService.addSpendHours(task, taskEditDialog.getSpendTime());
+        taskEditDialog.setConfirmRunnable(new Runnable() {
+            @Override
+            public void run() {
+                task.description = taskEditDialog.getDescription();
+                TaskService.addSpendHours(task, taskEditDialog.getSpendTime());
 
-            try {
-                Task.getDao().createOrUpdate(task);
-                Log.d(getUserTag(), "task save success");
-                adapter.notifyDataSetChanged();
-            } catch (SQLException e) {
-                e.printStackTrace();
+                try {
+                    Task.getDao().createOrUpdate(task);
+                    Log.d(getUserTag(), "task save success");
+                    adapter.notifyDataSetChanged();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

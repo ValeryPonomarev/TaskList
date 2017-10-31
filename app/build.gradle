@@ -10,10 +10,6 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0.0"
-
-        jackOptions {
-            enabled true;
-        }
     }
     buildTypes {
         release {
@@ -21,9 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_8;
-        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_8;
+    productFlavors {
+        raketa {
+            buildConfigField "String", "HOST", "\"192.168.1.55\""
+            buildConfigField "String", "PORT", "\"9000\""
+        }
     }
 }
 
@@ -36,6 +34,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.j256.ormlite:ormlite-android:5.0'
+    compile 'com.google.dagger:dagger:2.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     testCompile 'junit:junit:4.12'
 }
+

@@ -13,18 +13,6 @@ import easysales.tasklist.model.Task;
  */
 
 public class TaskService {
-    public static List<Task> getTaskList() {
-        List<Task> result = new ArrayList<>();
-
-        try {
-            result.addAll(Task.getDao().queryForAll());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }
-
     public static void addSpendHours(Task task, int value){
         TaskService.addSpendMinuts(task, value * 60);
     }

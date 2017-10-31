@@ -79,17 +79,24 @@ public class TaskEditDialog extends BaseDialogFragment {
 
         fillForm();
 
-        builder.setPositiveButton(R.string.save, (dialogInterface, i) -> {
-            if(confirmRunnable != null) {
-                confirmRunnable.run();
+        builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(confirmRunnable != null) {
+                    confirmRunnable.run();
+                }
             }
         });
 
-        builder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-            if(cancelRunnable != null ) {
-                cancelRunnable.run();
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(cancelRunnable != null ) {
+                    cancelRunnable.run();
+                }
             }
         });
+
 
         AlertDialog alertDialog = builder.create();
 
