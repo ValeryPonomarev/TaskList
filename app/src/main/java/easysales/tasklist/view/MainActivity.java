@@ -1,12 +1,9 @@
-package easysales.tasklist.ui;
+package easysales.tasklist.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.BaseAdapter;
 
 import easysales.tasklist.R;
-import easysales.tasklist.model.Task;
-import easysales.tasklist.ui.base.BaseActivity;
+import easysales.tasklist.view.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 

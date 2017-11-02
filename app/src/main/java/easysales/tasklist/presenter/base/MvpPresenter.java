@@ -1,5 +1,8 @@
 package easysales.tasklist.presenter.base;
 
+import android.support.annotation.NonNull;
+import android.view.View;
+
 import easysales.tasklist.view.base.MvpView;
 
 /**
@@ -7,7 +10,7 @@ import easysales.tasklist.view.base.MvpView;
  */
 
 public interface MvpPresenter<V extends MvpView> {
-    void attachView(V mvpView);
+    void attachView(V view);
     void onViewLoaded();
     void detachView();
     void destroy();

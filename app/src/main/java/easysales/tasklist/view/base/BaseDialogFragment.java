@@ -1,4 +1,4 @@
-package easysales.tasklist.ui.base;
+package easysales.tasklist.view.base;
 
 import android.support.v4.app.DialogFragment;
 
@@ -6,7 +6,7 @@ import android.support.v4.app.DialogFragment;
  * Created by lordp on 16.07.2017.
  */
 
-public class BaseDialogFragment extends DialogFragment {
+public class BaseDialogFragment extends DialogFragment implements MvpView {
     protected Runnable confirmRunnable;
     protected Runnable cancelRunnable;
 
@@ -16,5 +16,9 @@ public class BaseDialogFragment extends DialogFragment {
 
     public void setCancelRunnalbe(Runnable runnable) {
         cancelRunnable = runnable;
+    }
+
+    protected String getUserTag() {
+        return getClass().getSimpleName();
     }
 }

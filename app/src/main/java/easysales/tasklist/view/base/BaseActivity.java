@@ -1,4 +1,4 @@
-package easysales.tasklist.ui.base;
+package easysales.tasklist.view.base;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import easysales.tasklist.R;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public void replaceFragment(BaseFragment fragment, boolean putToBackStack) {
+    public void replaceFragment(MvpFragment fragment, boolean putToBackStack) {
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, fragment, fragment.getUserTag())

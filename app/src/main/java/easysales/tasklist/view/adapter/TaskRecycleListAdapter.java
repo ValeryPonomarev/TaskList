@@ -1,4 +1,4 @@
-package easysales.tasklist.ui.adapter;
+package easysales.tasklist.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,9 +23,13 @@ public class TaskRecycleListAdapter extends RecyclerView.Adapter<TaskRecycleList
     private List<Task> tasks;
     private TaskViewHolder.OnItemClickListener itemClickListener;
 
-    public TaskRecycleListAdapter(List<Task> tasks, TaskViewHolder.OnItemClickListener listener) {
-        this.tasks = tasks;
+    public TaskRecycleListAdapter(TaskViewHolder.OnItemClickListener listener) {
+        tasks = new ArrayList<>();
         itemClickListener = listener;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override

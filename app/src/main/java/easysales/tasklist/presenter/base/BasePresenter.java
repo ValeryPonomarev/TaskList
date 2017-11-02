@@ -1,6 +1,7 @@
 package easysales.tasklist.presenter.base;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import easysales.tasklist.view.base.MvpView;
 
@@ -12,13 +13,17 @@ public abstract class BasePresenter<V extends MvpView> implements MvpPresenter<V
 
     private V view;
 
+    protected String getUserTag() {
+        return this.getClass().getSimpleName();
+    };
+
     public V getView() {
         return view;
     }
 
     @Override
-    public void attachView(@NonNull V mvpView) {
-        view = mvpView;
+    public void attachView(V view) {
+        this.view = view;
     }
 
     @Override

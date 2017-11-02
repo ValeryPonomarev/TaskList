@@ -19,6 +19,7 @@ public class ApplicationWrapper extends Application {
 
     private static ApplicationWrapper instance;
     private static DatabaseHelper databaseHelper;
+    private static AppComponent appComponent;
 
     public static String APP_KEY = "easysales.tasklist";
 
@@ -27,6 +28,7 @@ public class ApplicationWrapper extends Application {
         super.onCreate();
         instance = this;
         databaseHelper = DatabaseHelper.getInstance(this);
+        appComponent = DaggerAppComponent.create();
         loadTestData();
     }
 
@@ -34,8 +36,12 @@ public class ApplicationWrapper extends Application {
         return instance;
     }
 
-    public DatabaseHelper getDatabaseHelper() {
+    public static DatabaseHelper getDatabaseHelper() {
         return databaseHelper;
+    }
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
     }
 
     private void loadTestData() {
