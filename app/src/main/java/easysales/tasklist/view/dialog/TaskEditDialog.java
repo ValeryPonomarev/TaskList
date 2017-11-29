@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,13 +23,15 @@ import easysales.tasklist.R;
 import easysales.tasklist.model.Task;
 import easysales.tasklist.presenter.TaskEditPresenter;
 import easysales.tasklist.view.TaskEditView;
-import easysales.tasklist.view.base.BaseDialogFragment;
+import easysales.tasklist.view.base.MvpDialogFragment;
 import easysales.tasklist.util.DataHelper;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TaskEditDialog extends BaseDialogFragment implements TaskEditView {
+public class TaskEditDialog extends MvpDialogFragment
+        implements  TaskEditView {
+
     public static final String TAG = "TaskEditDialog";
     public static final String ARG_TASK = "task";
 
@@ -71,16 +72,18 @@ public class TaskEditDialog extends BaseDialogFragment implements TaskEditView {
         }
 
         ApplicationWrapper.getAppComponent().injectTaskEditFragment(this);
+        presenter.attachView(this);
 
-        if(task.number == null || TextUtils.isEmpty(task.number)) {
+        if(task.getNumber() == null || TextUtils.isEmpty(task.getNumber())) {
             builder.setTitle(String.format(Locale.getDefault(), getString(R.string.new_task)));
         }else {
-            builder.setTitle(String.format(Locale.getDefault(), "%s№ %s", getString(R.string.task), task.number));
+            builder.setTitle(String.format(Locale.getDefault(), "%s№ %s", getString(R.string.task), task.getNumber()));
         }
 
         builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                onTaskSaveClick();
                 if(confirmRunnable != null) {
                     confirmRunnable.run();
                 }
@@ -95,7 +98,7 @@ public class TaskEditDialog extends BaseDialogFragment implements TaskEditView {
                 }
             }
         });
-
+        presenter.onViewLoaded();
         return builder.create();
     }
 
@@ -117,8 +120,13 @@ public class TaskEditDialog extends BaseDialogFragment implements TaskEditView {
 
     @Override
     public void showTask(Task task) {
-        this.taskDescriptionEdit.setText(task.description);
-        this.spendTimeEdit.setText(String.format(Locale.getDefault(), "%d", task.spandMinuts/60));
+        this.taskDescriptionEdit.setText(task.getDescription());
+        this.spendTimeEdit.setText(String.format(Locale.getDefault(), "%d", task.getSpandMinuts() /60));
+    }
+
+    @Override
+    public Task getTask() {
+        return task;
     }
 
     @Override

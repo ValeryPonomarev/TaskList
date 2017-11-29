@@ -89,12 +89,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         SimpleDao<Task> taskDao = Task.getDao();
 
         Task task1 = new Task();
-        task1.number = "N1";
-        task1.description = "description 1";
+        task1.setNumber("N1");
+        task1.setDescription("description 1");
 
         Task task2 = new Task();
-        task1.number = "N2";
-        task1.description = "description 2";
+        task1.setNumber("N2");
+        task1.setDescription("description 2");
 
         taskDao.create(task1);
         taskDao.create(task2);

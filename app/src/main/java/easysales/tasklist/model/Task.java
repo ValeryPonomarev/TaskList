@@ -20,26 +20,66 @@ public class Task extends BaseModel implements Serializable {
     private static SimpleDao<Task> dao;
 
     @DatabaseField(generatedId = true)
-    public Integer id;
+    private Integer id;
 
     @DatabaseField
-    public String number;
+    private String number;
 
     @DatabaseField
-    public String description;
+    private Date date;
 
     @DatabaseField
-    public Date dateCreate;
+    private String description;
 
     @DatabaseField
-    public int spandMinuts;
+    private int spandMinuts;
 
     public static SimpleDao<Task> getDao() throws SQLException {
         if(dao == null) {
-            dao = new SimpleDao<>(ApplicationWrapper.getInstance().getDatabaseHelper().getConnectionSource(), Task.class);
+            dao = new SimpleDao<>(ApplicationWrapper.getDatabaseHelper().getConnectionSource(), Task.class);
         }
 
         return dao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getSpandMinuts() {
+        return spandMinuts;
+    }
+
+    public void setSpandMinuts(int spandMinuts) {
+        this.spandMinuts = spandMinuts;
     }
 
     public static class List extends ArrayList<Task> {}

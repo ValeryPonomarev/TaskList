@@ -13,6 +13,7 @@ public interface TaskEditView extends MvpView {
 
     void showTask(Task task);
 
+    Task getTask();
     TaskData getTaskData();
 
     public class TaskData {

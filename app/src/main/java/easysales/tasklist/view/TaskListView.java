@@ -12,6 +12,6 @@ import easysales.tasklist.view.base.MvpView;
  */
 
 public interface TaskListView extends MvpView {
-    void showTasks(List<Task> tasks);
+    void refreshList();
     void showTaskEditDialog(Task task);
 }

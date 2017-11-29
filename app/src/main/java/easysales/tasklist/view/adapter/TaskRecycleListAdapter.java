@@ -68,8 +68,8 @@ public class TaskRecycleListAdapter extends RecyclerView.Adapter<TaskRecycleList
 
         public void bind(Task task) {
             this.task = task;
-            taskNumberView.setText(task.number);
-            taskTitleView.setText(task.description);
+            taskNumberView.setText(task.getNumber());
+            taskTitleView.setText(task.getDescription());
         }
 
         @Override

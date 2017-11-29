@@ -29,7 +29,7 @@ public class ApplicationWrapper extends Application {
         instance = this;
         databaseHelper = DatabaseHelper.getInstance(this);
         appComponent = DaggerAppComponent.create();
-        loadTestData();
+//        loadTestData();
     }
 
     public static ApplicationWrapper getInstance() {

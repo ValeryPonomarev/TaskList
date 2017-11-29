@@ -13,11 +13,17 @@
         android:layout_marginBottom="10dp"
         android:text="@string/add"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/task_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/add_task_button"
-        style="@style/ListStyle"/>
+        android:padding="5dp">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/task_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/add_task_button"
+            style="@style/ListStyle"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

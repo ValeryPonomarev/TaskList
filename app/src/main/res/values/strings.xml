@@ -10,12 +10,13 @@
     <string name="spend_time">Затраты</string>
     <string name="task">Задача</string>
     <string name="new_task">Новая задача</string>
-    <string name="test_data">[{"id":1,"number":"TASK-1","description":"1","status":"OPEN","dateEnd":null,"createTime":1509475032000},
-  {"id":2,"number":"TASK-2","description":"2","status":"OPEN","dateEnd":null,"createTime":1509475032000},
-  {"id":3,"number":"TASK-3","description":"3","status":"OPEN","dateEnd":null,"createTime":1509475032001},
-  {"id":4,"number":"TASK-4","description":"4","status":"OPEN","dateEnd":null,"createTime":1509475032002},
-  {"id":5,"number":"TASK-5","description":"5","status":"OPEN","dateEnd":null,"createTime":1509475032003},
-  {"id":6,"number":"TASK-6","description":"6","status":"OPEN","dateEnd":null,"createTime":1509475032004},
-  {"id":7,"number":"TASK-7","description":"7","status":"OPEN","dateEnd":null,"createTime":1509475032005}
+    <string name="task_date">Дата</string>
+    <string name="test_data">[{"id":1,"number":"TASK-1", "date":1509475032000, "description":"1","status":"OPEN","dateEnd":null,"createTime":1509475032000},
+  {"id":2,"number":"TASK-2", "date":1509475032000, "description":"2","status":"OPEN","dateEnd":null,"createTime":1509475032000},
+  {"id":3,"number":"TASK-3", "date":1509475032000, "description":"3","status":"OPEN","dateEnd":null,"createTime":1509475032001},
+  {"id":4,"number":"TASK-4", "date":1509475032000, "description":"4","status":"OPEN","dateEnd":null,"createTime":1509475032002},
+  {"id":5,"number":"TASK-5", "date":1509475032000, "description":"5","status":"OPEN","dateEnd":null,"createTime":1509475032003},
+  {"id":6,"number":"TASK-6", "date":1509475032000, "description":"6","status":"OPEN","dateEnd":null,"createTime":1509475032004},
+  {"id":7,"number":"TASK-7", "date":1509475032000, "description":"7","status":"OPEN","dateEnd":null,"createTime":1509475032005}
 ]</string>
 </resources>

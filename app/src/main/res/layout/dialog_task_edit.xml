@@ -11,14 +11,14 @@
 
         <TextView
             style="@style/edit_params_caption"
-            android:text="@string/spend_time"/>
+            android:text="@string/task_date"/>
 
         <EditText
             android:id="@+id/spend_time"
             style="@style/edit_params_editor"
-            android:inputType="numberDecimal"
-            android:maxLength="5"
-            android:hint="@string/spend_time"
+            android:inputType="date"
+            android:hint="@string/task_date"
+            android:enabled="false"
             android:paddingStart="5dp"/>
 
     </LinearLayout>
@@ -29,7 +29,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:hint="@string/task_description"
-        android:minHeight="100dp"
+        android:minHeight="150dp"
         android:inputType="text" />
 
 

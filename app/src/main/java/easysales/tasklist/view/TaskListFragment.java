@@ -1,8 +1,10 @@
 package easysales.tasklist.view;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,15 +28,20 @@ import easysales.tasklist.model.Task;
 import easysales.tasklist.model.repository.TaskRepository;
 import easysales.tasklist.model.service.TaskService;
 import easysales.tasklist.presenter.TaskListPresenter;
+import easysales.tasklist.presenter.base.MvpPresenter;
 import easysales.tasklist.view.adapter.TaskRecycleListAdapter;
 import easysales.tasklist.view.base.MvpFragment;
 import easysales.tasklist.view.dialog.TaskEditDialog;
+import easysales.tasklist.view.loader.TaskListLoader;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TaskListFragment extends MvpFragment implements TaskListView, TaskRecycleListAdapter.TaskViewHolder.OnItemClickListener {
+public class TaskListFragment extends MvpFragment
+        implements  TaskListView,
+                    TaskRecycleListAdapter.TaskViewHolder.OnItemClickListener,
+                    SwipeRefreshLayout.OnRefreshListener,{
 
     @Inject
     TaskListPresenter presenter;
@@ -44,6 +51,9 @@ public class TaskListFragment extends MvpFragment implements TaskListView, TaskR
 
     @BindView(R.id.add_task_button)
     Button addTaskButton;
+
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeContainer;
 
     private TaskRecycleListAdapter adapter;
 
@@ -56,14 +66,16 @@ public class TaskListFragment extends MvpFragment implements TaskListView, TaskR
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
-        ButterKnife.bind(this, view);
         ApplicationWrapper.getAppComponent().injectTaskListFragment(this);
-        presenter.attachView(this);
+        ButterKnife.bind(this, view);
+
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         adapter = new TaskRecycleListAdapter(this);
         taskRecyclerView.setAdapter(adapter);
+        swipeContainer.setOnRefreshListener(this);
+
+        presenter.attachView(this);
         presenter.onViewLoaded();
         return view;
     }
@@ -80,9 +92,8 @@ public class TaskListFragment extends MvpFragment implements TaskListView, TaskR
     }
 
     @Override
-    public void showTasks(List<Task> tasks) {
-        adapter.setTasks(tasks);
-        adapter.notifyDataSetChanged();
+    public void refreshList() {
+        getLoaderManager().restartLoader(TaskListLoader.ID, null, this).forceLoad();
     }
 
     @Override
@@ -92,9 +103,29 @@ public class TaskListFragment extends MvpFragment implements TaskListView, TaskR
         taskEditDialog.setConfirmRunnable(new Runnable() {
             @Override
             public void run() {
+                presenter.onTaskEdited(taskEditDialog.getTask());
             }
         });
 
         taskEditDialog.show(getFragmentManager(), TaskEditDialog.TAG);
+    }
+
+    private void showTasks(List<Task> tasks) {
+        adapter.setTasks(tasks);
+        adapter.notifyDataSetChanged();
+        if(swipeContainer.isRefreshing()) {
+            swipeContainer.setRefreshing(false);
+        }
+    }
+
+
+    @Override
+    public void onRefresh() {
+        refreshList();
+    }
+
+    @Override
+    protected MvpPresenter getPresenter() {
+        return presenter;
     }
 }

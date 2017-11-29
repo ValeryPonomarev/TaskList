@@ -2,6 +2,7 @@ package easysales.tasklist.view;
 
 import android.os.Bundle;
 
+import easysales.tasklist.ApplicationWrapper;
 import easysales.tasklist.R;
 import easysales.tasklist.view.base.BaseActivity;
 
@@ -16,5 +17,10 @@ public class MainActivity extends BaseActivity {
 
     public void showTaskListFragment() {
         replaceFragment(TaskListFragment.newInstance(), false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

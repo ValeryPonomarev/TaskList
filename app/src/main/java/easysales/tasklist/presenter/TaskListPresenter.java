@@ -11,4 +11,5 @@ import easysales.tasklist.view.TaskListView;
 public interface TaskListPresenter extends MvpPresenter<TaskListView> {
     void onTaskClick(Task task);
     void onAddTackClick();
+    void onTaskEdited(Task task);
 }

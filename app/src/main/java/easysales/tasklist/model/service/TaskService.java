@@ -1,11 +1,5 @@
 package easysales.tasklist.model.service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import easysales.tasklist.model.Task;
 
 /**
@@ -18,7 +12,7 @@ public class TaskService {
     }
 
     public static void addSpendMinuts(Task task, int value){
-        task.spandMinuts += value;
+        task.setSpandMinuts(task.getSpandMinuts() + value);
     }
 
 }

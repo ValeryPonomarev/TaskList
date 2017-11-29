@@ -6,7 +6,7 @@ import android.support.v4.app.DialogFragment;
  * Created by lordp on 16.07.2017.
  */
 
-public class BaseDialogFragment extends DialogFragment implements MvpView {
+public class MvpDialogFragment extends DialogFragment implements MvpView {
     protected Runnable confirmRunnable;
     protected Runnable cancelRunnable;
 
